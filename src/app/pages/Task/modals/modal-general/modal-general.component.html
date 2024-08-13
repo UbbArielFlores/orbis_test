@@ -1,0 +1,35 @@
+<div class="modal" [ngStyle]="{'display':_modalAngular_.oculto}" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="form-check">
+                <div *ngIf="title=='Editar'" class="input-group mb-3 mt-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Titulo </span>
+                    <input [(ngModel)]="value.title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                
+                </div>
+
+                <div *ngIf="title=='Eliminar'" class="input-group mb-3 mt-3">
+                    <p>¿Estas seguro que deseas eliminar esta tarea?</p>
+                </div>
+
+                <div *ngIf="title=='Agregar'" class="mt-1">
+                    <p>Añade una nueva tarea</p>
+                    <div  class="input-group mb-3 mt-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Titulo </span>
+                        <input [(ngModel)]="value.title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" (click)="confirmarModal()">Confirmar</button>
+                <button (click)="ocultarModal()" type="button" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+.icon{
+    width: 20px; 
+    margin-left: 10px;
+    height: 20px;
+}
+
+.icon:hover{
+    cursor: pointer;
+}
+
+.f-r{
+    float: right;
+}

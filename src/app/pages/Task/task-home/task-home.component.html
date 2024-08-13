@@ -1,0 +1,48 @@
+<div class="text-center container mt-4">
+  
+
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        <h1>Lista de tareas</h1>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-success f-r" (mouseenter)="_editarToAgregar()"  (click)="_modalAngular_.mostrarModal()">Agregar +</button>
+      </div>
+  </div>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr class="table-info">
+        <th scope="col">#</th>
+        <th scope="col" colspan="2">Titulo</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Configurar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td colspan="2">{{item.title}}</td>
+        <td>
+          <button *ngIf="item.completed==true" type="button" disabled class="btn btn-success">Realizado</button>
+          <button *ngIf="item.completed==false" type="button" disabled class="btn btn-warning">Pendiente</button>
+          <!-- <button *ngIf="item.estado==false"  type="button" disabled class="btn btn-danger">Eliminado</button> -->
+        </td>
+        <td>
+          <img *ngIf="item.completed==false" src="assets/icons/check-solid.svg" class="icon" (click)="_finalizar(item)">
+          <img *ngIf="item.completed==false" src="assets/icons/pen-to-square-solid.svg" class="icon" (mouseenter)="_eliminarToEditar(item)"  (click)="_modalAngular_.mostrarModal()">
+          <img  src="assets/icons/trash-solid.svg" class="icon" (mouseenter)="_editarToEliminar(item)"  (click)="_modalAngular_.mostrarModal()">
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <div>
+    <h3 *ngIf="items.length==0">Por favor ingrese tareas</h3>
+  </div>
+
+<app-modal-general [title]=tipoModal [value]=value [items]="items" [funcion]="actualizar" ></app-modal-general>
